@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vega-Lite Visualizations</title>
+
+  <!-- Vega Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f7f9fb;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .chart {
+      margin: 40px auto;
+      width: 85%;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>My Vega-Lite Visualizations</h1>
+
+  <div id="chart1" class="chart"></div>
+  <div id="chart2" class="chart"></div>
+
+  <script>
+    // Embed the first chart
+    vegaEmbed('#chart1', 'chart1.json')
+      .then(function(result) {
+        console.log('Chart 1 loaded successfully');
+      })
+      .catch(console.error);
+
+    // Embed the second chart
+    vegaEmbed('#chart2', 'chart2.json')
+      .then(function(result) {
+        console.log('Chart 2 loaded successfully');
+      })
+      .catch(console.error);
+  </script>
+</body>
+</html>
