@@ -12,45 +12,94 @@
 
   <style>
     body {
-      font-family: "Segoe UI", sans-serif;
-      background-color: #f7f9fb;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #fce4ec 0%, #e3f2fd 100%);
       text-align: center;
-      padding: 30px;
-    }
-    h1 {
+      padding: 40px;
       color: #2c3e50;
     }
+
+    h1 {
+      color: #1a237e;
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      color: #5c6bc0;
+      font-size: 1.1em;
+      margin-bottom: 50px;
+    }
+
     .chart {
       margin: 40px auto;
       width: 85%;
-      background: #fff;
+      background: white;
       padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .chart:hover {
+      transform: scale(1.01);
+    }
+
+    .annotation {
+      margin-top: 12px;
+      font-size: 0.95em;
+      color: #4f5b62;
+      background: #f3f8ff;
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid #bbdefb;
+    }
+
+    hr {
+      width: 80%;
+      margin: 50px auto;
+      border: 0;
+      height: 2px;
+      background: linear-gradient(to right, #f8bbd0, #bbdefb);
+      border-radius: 2px;
     }
   </style>
 </head>
 
 <body>
-  <h1>My Vega-Lite Visualizations</h1>
+  <h1>Malaysia Birth Data Insights</h1>
+  <p class="subtitle">Interactive Vega-Lite visualizations (2000–2023)</p>
 
+  <!-- Chart 1 -->
   <div id="chart1" class="chart"></div>
+  <p class="annotation">
+    📈 This line chart illustrates the trend in total live births 
+    across different ethnic groups from 2000 to 2023, highlighting
+    how birth rates have evolved over the years for each ethnicity.
+  </p>
+
+  <hr>
+
+  <!-- Chart 2 -->
   <div id="chart2" class="chart"></div>
+  <p class="annotation">
+    🍭 This lollipop chart shows how total live births vary across 
+    states. Select a year from the dropdown to see how the numbers
+    change over time!
+  </p>
 
   <script>
     // Embed the first chart
     vegaEmbed('#chart1', 'HW10_linechart.json')
-      .then(function(result) {
-        console.log('Chart 1 loaded successfully');
-      })
+      .then(() => console.log('Chart 1 loaded successfully'))
       .catch(console.error);
 
     // Embed the second chart
     vegaEmbed('#chart2', 'HW10_lollipop.json')
-      .then(function(result) {
-        console.log('Chart 2 loaded successfully');
-      })
+      .then(() => console.log('Chart 2 loaded successfully'))
       .catch(console.error);
   </script>
 </body>
 </html>
+
