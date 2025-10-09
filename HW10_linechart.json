@@ -21,28 +21,50 @@
       "groupby": ["Year", "Ethnicity_Label"]
     }
   ],
-  "mark": {"type": "line", "point": true, "strokeWidth": 2},
-  "encoding": {
-    "x": {"field": "Year", "type": "ordinal", "title": "Year"},
-    "y": {
-      "field": "total_births",
-      "type": "quantitative",
-      "title": "Live Births"
-    },
-    "color": {
-      "field": "Ethnicity_Label",
-      "type": "nominal",
-      "title": "Ethnicity",
-      "scale": {
-        "domain": ["Bumiputera Malay", "Chinese", "Indian", "Other Bumiputera"],
-        "range": ["#1f77b4", "#ff7f0e", "#FFD700", "#d62728"]
+  "layer": [
+    {
+      "mark": {"type": "line", "point": true, "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+        "y": {"field": "total_births", "type": "quantitative", "title": "Live Births"},
+        "color": {
+          "field": "Ethnicity_Label",
+          "type": "nominal",
+          "title": "Ethnicity",
+          "scale": {
+            "domain": ["Bumiputera Malay", "Chinese", "Indian", "Other Bumiputera"],
+            "range": ["#1f77b4", "#ff7f0e", "#FFD700", "#d62728"]
+          }
+        },
+        "tooltip": [
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Ethnicity_Label", "type": "nominal", "title": "Ethnicity"},
+          {"field": "total_births", "type": "quantitative", "title": "Live Births"}
+        ]
       }
     },
-    "tooltip": [
-      {"field": "Year", "type": "ordinal"},
-      {"field": "Ethnicity_Label", "type": "nominal", "title": "Ethnicity"},
-      {"field": "total_births", "type": "quantitative", "title": "Live Births"}
-    ]
-  },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -8,
+        "color": "black",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "background": "#ffcc80",
+        "cornerRadius": 4,
+        "padding": 4
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "total_births", "type": "quantitative"},
+        "text": {"value": "Chinese births decline (2016)"}
+      },
+      "transform": [
+        {"filter": "datum.Ethnicity_Label == 'Chinese' && datum.Year == 2016"}
+      ]
+    }
+  ],
   "config": {}
 }
